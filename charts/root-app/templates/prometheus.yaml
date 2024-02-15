@@ -15,6 +15,12 @@ spec:
       values: |
         pushgateway:
           enabled: false
+        server:
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - prometheus
   destination:
     server: https://kubernetes.default.svc
     namespace: prometheus
