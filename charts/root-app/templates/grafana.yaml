@@ -18,6 +18,13 @@ spec:
           ingressClassName: nginx
           hosts:
             - grafana
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+            - name: Loki
+              type: loki
+              url: http://loki:3100
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
