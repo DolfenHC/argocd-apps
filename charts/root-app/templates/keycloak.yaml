@@ -17,9 +17,6 @@ spec:
           enabled: true
           ingressClassName: nginx
           hostname: keycloak
-        auth:
-          adminUser: admin
-          adminPassword: admin
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak 
