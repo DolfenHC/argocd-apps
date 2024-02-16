@@ -22,10 +22,10 @@ spec:
           adminPassword: "admin"
         postgresql:
           enabled: true
-            auth:
-              postgresPassword: "admin"
-              username: "keycloak"
-              password: "keycloak"
+          auth:
+            postgresPassword: "admin"
+            username: "keycloak"
+            password: "keycloak"
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak 
