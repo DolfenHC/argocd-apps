@@ -10,9 +10,7 @@ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 ## Initial installation
 Clone this Repo and run the following command:
 ```
-helm repo add argo-cd https://argoproj.github.io/argo-helm
-helm install argocd argo-cd/argo-cd --values argocd-values.yaml --namespace=argocd --create-namespace
-helm template root-app/ | kubectl apply -f -
+./install.sh
 ```
 
 ## Grafana
