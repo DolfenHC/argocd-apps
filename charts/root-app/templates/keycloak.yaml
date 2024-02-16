@@ -17,6 +17,15 @@ spec:
           enabled: true
           ingressClassName: nginx
           hostname: keycloak
+        auth:
+          adminUser: "admin"
+          adminPassword: "admin"
+        postgresql:
+          enabled: true
+            auth:
+              postgresPassword: "admin"
+              username: "keycloak"
+              password: "keycloak"
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak 
