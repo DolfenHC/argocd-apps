@@ -38,8 +38,6 @@ spec:
         mysql:
           extraLabels:
             scale-down: "yes"
-          securityContext:
-            runAsNonRoot: true
           resources:
             limits:
               cpu: 1
