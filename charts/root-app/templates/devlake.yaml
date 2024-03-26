@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: grafana
+  name: devlake
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -17,7 +17,7 @@ spec:
           enabled: true
           ingressClassName: nginx
           hosts:
-            - grafana
+            - devlake
         commonEnvs:
           TZ: "Europe/Berlin"
         grafana:
