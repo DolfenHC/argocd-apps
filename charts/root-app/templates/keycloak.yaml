@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: keycloak 
-    targetRevision: 18.4.0
+    targetRevision: 18.*.*
     helm:
       values: |
         ingress:
