@@ -4,23 +4,26 @@ metadata:
   namespace: argocd
   name: ingress-nginx
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://kubernetes.github.io/ingress-nginx
-    chart: ingress-nginx 
+    chart: ingress-nginx
     targetRevision: 4.9.1
     helm:
       values: |
         controller:
           hostNetwork: true
+          allowSnippetAnnotations: true
+          config:
+            use-forwarded-headers: true
           service:
             type: ""
           kind: DaemonSet
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx 
+    namespace: ingress-nginx
   syncPolicy:
     automated:
       prune: true
