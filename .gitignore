@@ -1,2 +1,4 @@
 /argocd-apps.iml
 /.idea/
+aws-credentials.txt
+gcp-credentials.json

@@ -1,0 +1,7 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v1.11.3
