@@ -1,0 +1,9 @@
+apiVersion: s3.aws.upbound.io/v1beta2
+kind: Bucket
+metadata:
+  name: crossplane-bucket-gdo
+spec:
+  forProvider:
+    region: eu-central-1
+  providerConfigRef:
+    name: default
