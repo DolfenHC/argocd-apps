@@ -1,0 +1,6 @@
+apiVersion: queue.example.com/v1alpha1
+kind: PubSubClaim
+metadata:
+  name: pubsub-app-gdo
+spec: 
+  location: "EU"
