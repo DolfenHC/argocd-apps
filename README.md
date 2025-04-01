@@ -1,9 +1,9 @@
 # argocd-apps
 
 ## Initial installation
-Clone this Repo and run the following command:
+Start a new empty ubuntu distro on wsl and call the following command:
 ```
-./install.sh
+sudo curl -s https://raw.githubusercontent.com/DolfenHC/argocd-apps/refs/heads/main/install_all.sh | bash
 ```
 
 ## Grafana
