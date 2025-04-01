@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: trino
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://trinodb.github.io/charts
+    chart: trino
+    targetRevision: 0.29.0
+    helm:
+      values: |
+        additionalCatalogs:
+          postgresql: |
+            connector.name=postgresql
+            connection-url=jdbc:postgresql://postgres-postgresql.postgres.svc.cluster.local:5432/postgres
+            connection-user=admin
+            connection-password=admin
+        additionalConfigProperties:
+          - http-server.process-forwarded=true
+        ingress:
+         enabled: true
+         className: nginx
+         annotations:
+           nginx.ingress.kubernetes.io/proxy-body-size: 2048m
+           nginx.ingress.kubernetes.io/configuration-snippet: |
+             more_set_headers "X-Forwarded-For $http_x_forwarded_for";
+         hosts:
+           - host: trino.dev.k8s.forum-is.lan
+             paths:
+               - path: /
+                 pathType: Prefix
+                 backend:
+                   service:
+                     name: trino
+                     port:
+                       number: 8080
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: trino
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
