@@ -52,7 +52,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio-nodeport-service
+  name: minio-api
 spec:
   selector:
     app: minio
@@ -61,12 +61,13 @@ spec:
       name: api
       port: 9000
       targetPort: 9000
+      nodePort: 30031
   type: NodePort
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio-service
+  name: minio-console
 spec:
   type: ClusterIP
   selector:
